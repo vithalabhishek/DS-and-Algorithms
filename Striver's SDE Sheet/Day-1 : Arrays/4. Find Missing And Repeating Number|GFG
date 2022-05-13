@@ -1,0 +1,54 @@
+https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1/
+
+BIT MANIPULATION QUESTION, BIT MASKING and XOR.
+
+Difficult
+
+https://www.youtube.com/watch?v=5nMGY4VUoRY&list=PLgUwDviBIf0rPG3Ictpu74YWBQ1CaBkm2&index=3
+
+https://www.youtube.com/watch?v=MvklwzVz654
+// PEPCODING IS THE BEST. 
+
+class Solve {
+    int[] findTwoElement(int arr[], int n) {
+        // code here
+        int xor = 0;
+   for(int i = 0 ; i < n; i++){
+       xor ^= arr[i];
+       xor ^= (i + 1);
+   }
+   int rsbmask = xor & (-xor);//right most bit
+   int x = 0;
+   int y  = 0;
+   for(int i = 0 ; i < n; i++){
+       if((rsbmask & arr[i]) == 0){
+           x ^= arr[i];
+       }else{
+           y ^= arr[i];
+       }
+   }
+   
+   for(int i = 1 ; i <= n; i++){
+       if((rsbmask & i) == 0){
+           x ^= i;
+       }else{
+           y ^= i;
+       }
+   }
+    int [] ans = new int[2];
+   for(int i = 0 ; i < n; i++){
+       if(arr[i] == x){
+           ans[0] = x;
+           ans[1] = y;
+           break;
+       }
+       
+       if(arr[i] == y){
+           ans[0] = y;
+           ans[1] = x;
+           break;
+        }
+        }
+        return ans;
+    }
+}
