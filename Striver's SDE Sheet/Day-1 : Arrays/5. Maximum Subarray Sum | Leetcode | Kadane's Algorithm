@@ -1,0 +1,20 @@
+https://leetcode.com/problems/maximum-subarray/
+
+Maximum Subarray Sum | Leetcode | Kadane's Algorithm 
+
+https://www.youtube.com/watch?v=w_KEocd__20&list=PLgUwDviBIf0rPG3Ictpu74YWBQ1CaBkm2&index=5
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        //KADANE'S ALGORITHM
+        int sum = 0;
+        int maxsum = nums[0];
+        for(int i = 0;i < nums.length;i++)
+        {
+            sum += nums[i];
+            if(sum > maxsum) maxsum = sum;
+            if(sum < 0) sum = 0;
+        }
+        return maxsum;
+    }
+}
