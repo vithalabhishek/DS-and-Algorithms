@@ -1,0 +1,32 @@
+A starter question.
+
+https://www.youtube.com/watch?v=eMSfBgbiEjk&list=PLgUwDviBIf0rPG3Ictpu74YWBQ1CaBkm2&index=11
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int price = 0;
+        int minimum = Integer.MAX_VALUE;
+        
+        for(int i = 0; i< prices.length; i++){
+            minimum = Math.min(minimum, prices[i]);
+            price = Math.max(price, prices[i] - minimum);
+        }
+        return price;
+    }
+}
+OR
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int price = 0;
+        int minimum = Integer.MAX_VALUE;
+        
+        for(int i = 0; i< prices.length; i++){
+            minimum = Math.min(minimum, prices[i]);
+            price = Math.max(price, prices[i] - minimum);
+        }
+        return price;
+    }
+}
