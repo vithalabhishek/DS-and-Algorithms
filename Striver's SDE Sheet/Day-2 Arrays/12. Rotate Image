@@ -1,0 +1,26 @@
+https://www.youtube.com/watch?v=Y72QeX0Efxw&list=PLgUwDviBIf0rPG3Ictpu74YWBQ1CaBkm2&index=12
+
+https://leetcode.com/problems/rotate-image/
+
+class Solution {
+    public void rotate(int[][] matrix) {
+        int size = matrix.length;
+        //transposing the matrix.
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < i; j++){
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+        //reversing the array.
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size/2; j++){ //remember size/2 here
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][size- 1 - j];//two pointer method to exchange first and last value and so on.
+                matrix[i][size-1-j] = temp;
+                
+            }
+        }
+    }
+}
