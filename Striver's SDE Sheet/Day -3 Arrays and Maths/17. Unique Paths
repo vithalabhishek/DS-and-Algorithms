@@ -1,0 +1,18 @@
+https://leetcode.com/problems/unique-paths/
+
+https://www.youtube.com/watch?v=t_f0nwwdg5o&list=PLgUwDviBIf0rPG3Ictpu74YWBQ1CaBkm2&index=17
+
+class Solution {
+    public int uniquePaths(int m, int n) {
+        
+        int N = n + m - 2;
+        int r = m - 1;
+        double res = 1;
+        
+        for(int i = 1; i <=r ; i++)
+            res = res * (N - r + i)/i;    
+        
+        return (int)res;
+        
+    }
+}
