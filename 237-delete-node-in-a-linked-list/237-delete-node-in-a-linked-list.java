@@ -10,7 +10,8 @@ class Solution {
     public void deleteNode(ListNode node) {
         node.val = node.next.val;
         node.next = node.next.next;
-        
+        //IF TAIL CASE IS INCLUDED
+        // CHECK WITH IF ELSE CONDITION AND IF IT IS A TAIL NODE, ASSIGN NULL VAL TO THAT NODE.
         
     }
 }
