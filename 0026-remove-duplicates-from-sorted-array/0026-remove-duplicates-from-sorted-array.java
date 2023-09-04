@@ -1,22 +1,13 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        //Brute Force Approach
-       HashSet < Integer > set = new HashSet < > ();
-        for (int i = 0; i < nums.length; i++) {
-            set.add(nums[i]);
+        if(nums.length == 0) return 0;
+        int i = 0;
+        for(int j = 1; j < nums.length; j++){
+            if(nums[i] != nums[j]){
+                i++;
+                nums[i] = nums[j];
+            }
         }
-        // converting HashSet to arraylist
-        ArrayList <Integer> arrayList = new ArrayList(set);
-
-        // sorting the list
-        Collections.sort(arrayList);
-        System.out.println(arrayList);
-        int k = arrayList.size();
-        
-        int j = 0;
-        for (int x = 0; x < arrayList.size(); x++) {
-            nums[j++] = arrayList.get(x);
-        }
-        return k;
+        return i+1;
     }
 }
