@@ -1,23 +1,26 @@
 class Solution {
     public String convert(String s, int numRows) {
-        if (numRows == 1) return s;
-        //One builder for each row
-        StringBuilder[] listOfSb = new StringBuilder[numRows];
+        // Base conditions
+        if (s == null || s.isEmpty() || numRows <= 0) {
+            return "";
+        }
+        if (numRows == 1) {
+            return s;
+        }
+        // Resultant string
+        StringBuilder result = new StringBuilder();
+        // Step size
+        int step = 2 * numRows - 2;
+        // Loop for each row
         for (int i = 0; i < numRows; i++) {
-            listOfSb[i] = new StringBuilder();
+            // Loop for each character in the row
+            for (int j = i; j < s.length(); j += step) {
+                result.append(s.charAt(j));
+                if (i != 0 && i != numRows - 1 && (j + step - 2 * i) < s.length()) {
+                    result.append(s.charAt(j + step - 2 * i));
+                }
+            }
         }
-        int k = (numRows - 1) * 2;
-        for (int i = 0; i < s.length(); i++) {
-            int rest = i % k;
-            //i-th char in row [0, numRows-1] when rest < numRows
-            int row = rest < numRows ? rest : k - rest;
-            listOfSb[row].append(s.charAt(i));
-        }
-        StringBuilder sb = new StringBuilder();
-        //combine all builders
-        for (StringBuilder b : listOfSb) {
-            sb.append(b);
-        }
-        return sb.toString();
+        return result.toString();
     }
 }
